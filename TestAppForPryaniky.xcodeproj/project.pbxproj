@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7776B5A525CBE68100B7801E /* DataView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7776B5A425CBE68100B7801E /* DataView + Extension.swift */; };
+		7776B5D825CD60AA00B7801E /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 7776B5D725CD60AA00B7801E /* .gitignore */; };
 		77E38B7425CAAF950069B451 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E38B7325CAAF950069B451 /* AppDelegate.swift */; };
 		77E38B7625CAAF950069B451 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E38B7525CAAF950069B451 /* SceneDelegate.swift */; };
 		77E38B7D25CAAF980069B451 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 77E38B7C25CAAF980069B451 /* Assets.xcassets */; };
@@ -24,6 +25,7 @@
 /* Begin PBXFileReference section */
 		57AF7AE94E151A7C30C83B92 /* Pods-TestAppForPryaniky.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestAppForPryaniky.debug.xcconfig"; path = "Target Support Files/Pods-TestAppForPryaniky/Pods-TestAppForPryaniky.debug.xcconfig"; sourceTree = "<group>"; };
 		7776B5A425CBE68100B7801E /* DataView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataView + Extension.swift"; sourceTree = "<group>"; };
+		7776B5D725CD60AA00B7801E /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		77E38B7025CAAF950069B451 /* TestAppForPryaniky.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestAppForPryaniky.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		77E38B7325CAAF950069B451 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		77E38B7525CAAF950069B451 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 		77E38B6725CAAF950069B451 = {
 			isa = PBXGroup;
 			children = (
+				7776B5D725CD60AA00B7801E /* .gitignore */,
 				77E38B7225CAAF950069B451 /* TestAppForPryaniky */,
 				77E38B7125CAAF950069B451 /* Products */,
 				8BE0E4DA4C3E23D23EB599DA /* Pods */,
@@ -206,6 +209,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				77E38B8025CAAF980069B451 /* LaunchScreen.storyboard in Resources */,
+				7776B5D825CD60AA00B7801E /* .gitignore in Resources */,
 				77E38B7D25CAAF980069B451 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
