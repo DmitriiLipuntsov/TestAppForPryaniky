@@ -13,12 +13,6 @@ enum DataResponse {
     case success(ViewData)
     case optionSelected(Variant)
     case failure
-
-    enum Options {
-        case optionOne(Variant)
-        case optionTwo(Variant)
-        case optionThree(Variant)
-    }
     
     // MARK: - FirstData
     struct FirstData: Codable {
