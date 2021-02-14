@@ -14,23 +14,24 @@ protocol MainViewModelProtocol {
 
 class MainViewModel: MainViewModelProtocol {
     
-    var networkService: NetworkServiceProtocol
+    private var networkService: NetworkServiceProtocol
+    private var variants: [DataResponse.Variant] = []
     var updateViewData: ((DataResponse) -> Void)?
-    var variants: [DataResponse.Variant] = []
     
     init(networkService: NetworkServiceProtocol) {
         self.networkService = networkService
         getData()
     }
     
-    func setData(dataResponse: DataResponse.FirstData) {
+    private func setData(dataResponse: DataResponse.FirstData) {
         
         let data = decodeData(dataResponse: dataResponse)
         updateViewData?(.success(data))
     }
     
-    func decodeData(dataResponse: DataResponse.FirstData) -> ViewData {
+    private  func decodeData(dataResponse: DataResponse.FirstData) -> ViewData {
         var viewData = ViewData(hzText: "", picturerText: "", url: "", selectedId: 0, variants: [])
+        
         for data in dataResponse.data {
             if data.name == "hz" {
                 viewData.hzText = data.data.text ?? ""
@@ -44,22 +45,17 @@ class MainViewModel: MainViewModelProtocol {
             viewData.variants = variants
             self.variants = variants
         }
-        // решение кривовато. То что первое пришло в голову.
+        
         return viewData
     }
     
-    func startAction(indexOption: Int) {
-        let variant = decodeDataToOption(option: indexOption)
-        updateViewData?(.optionSelected(variant))
-    }
-    
-    func decodeDataToOption(option: Int) -> DataResponse.Variant {
+    private func decodeDataToOption(option: Int) -> DataResponse.Variant {
         let variant = variants[option]
         
         return variant
     }
     
-    func getData() {
+    private func getData() {
         networkService.featchData { [weak self] result in
             guard let self = self else { return }
             
@@ -73,6 +69,11 @@ class MainViewModel: MainViewModelProtocol {
             }
             
         }
+    }
+    
+    func startAction(indexOption: Int) {
+        let variant = decodeDataToOption(option: indexOption)
+        updateViewData?(.optionSelected(variant))
     }
     
 }

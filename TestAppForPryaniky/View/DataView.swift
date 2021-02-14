@@ -23,15 +23,28 @@ class DataView: UIView {
     
     var delegate: DataViewDelegate!
     var options: [DataResponse.Variant] = []
-    lazy var stackView = makeStackView()
-    lazy var topHzLabel = makeHzLabel()
-    lazy var optionsStackView = makeStackViewForChois()
-    lazy var picture = makePicture()
-    lazy var pictureLabel = makePictureLabel()
-    lazy var bottomHzLabel = makeHzLabel()
+    var stackView: UIStackView?
+    var topHzLabel: UILabel?
+    var optionsStackView: UIStackView?
+    var picture: UIImageView?
+    var pictureLabel: UILabel?
+    var bottomHzLabel: UILabel?
+    
+    init() {
+        super.init(frame: CGRect())
+        makeTopHzLabel()
+        makePicture()
+        makePictureLabel()
+        makeBottomHzLabel()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func layoutSubviews() {
         super.layoutSubviews()
+        
         switch viewData {
         case.success(let response):
             update(viewData: response)
@@ -43,21 +56,24 @@ class DataView: UIView {
         default:
             break
         }
-    }
-    
-    func update(viewData: ViewData) {
-        options = viewData.variants
-        stackView.backgroundColor = .gray
-        optionsStackView.backgroundColor = .brown
         
-        topHzLabel.text = viewData.hzText
-        let url = URL(string: viewData.url)
-        picture.kf.setImage(with: url)
-        pictureLabel.text = viewData.picturerText
-        bottomHzLabel.text = viewData.hzText
+        makeStackViewForChois()
+        makeStackView()
+
     }
     
-    func startAlert(variant: DataResponse.Variant) {
+    private func update(viewData: ViewData) {
+        options = viewData.variants
+        stackView?.backgroundColor = .gray
+        optionsStackView?.backgroundColor = .brown
+        topHzLabel?.text = viewData.hzText
+        let url = URL(string: viewData.url)
+        picture?.kf.setImage(with: url)
+        pictureLabel?.text = viewData.picturerText
+        bottomHzLabel?.text = viewData.hzText
+    }
+    
+    private func startAlert(variant: DataResponse.Variant) {
         let alert = UIAlertController(title: "ID: \(variant.id)", message: variant.text, preferredStyle: .alert)
         let action = UIAlertAction(title: "Ok", style: .cancel)
         alert.addAction(action)

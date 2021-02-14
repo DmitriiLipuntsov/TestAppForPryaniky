@@ -9,7 +9,7 @@ import UIKit
 
 extension DataView {
     
-    func makeStackView() -> UIStackView {
+    func makeStackView() {
         let stackView = UIStackView()
         stackView.alignment = .center
         stackView.axis = .vertical
@@ -28,26 +28,30 @@ extension DataView {
         ])
         
         addViewsInStackView(stackView)
-        
-        return stackView
+        self.stackView = stackView
     }
     
     func addViewsInStackView(_ stackView: UIStackView) {
-        stackView.addArrangedSubview(topHzLabel)
-        stackView.addArrangedSubview(optionsStackView)
-        stackView.addArrangedSubview(picture)
-        stackView.addArrangedSubview(pictureLabel)
-        stackView.addArrangedSubview(bottomHzLabel)
+        stackView.addArrangedSubview(topHzLabel ?? UILabel())
+        stackView.addArrangedSubview(optionsStackView ?? UIStackView())
+        stackView.addArrangedSubview(picture ?? UIImageView())
+        stackView.addArrangedSubview(pictureLabel ?? UILabel())
+        stackView.addArrangedSubview(bottomHzLabel ?? UILabel())
     }
     
-    func makeHzLabel() -> UILabel {
+    func makeTopHzLabel() {
         let label = UILabel()
-        label.text = "HZ"
-        
-        return label
+        label.text = "H"
+        self.topHzLabel = label
     }
     
-    func makeStackViewForChois() -> UIStackView  {
+    func makeBottomHzLabel() {
+        let label = UILabel()
+        label.text = "H"
+        self.bottomHzLabel = label
+    }
+    
+    func makeStackViewForChois() {
         let stackView = UIStackView()
         stackView.alignment = .center
         stackView.axis = .vertical
@@ -60,7 +64,7 @@ extension DataView {
         
         makeOptionsForSelectorStackView(stackView)
         
-        return stackView
+        self.optionsStackView = stackView
     }
     
     func makeOptionsForSelectorStackView(_ stackView: UIStackView) {
@@ -83,17 +87,15 @@ extension DataView {
         return button
     }
     
-    func makePicture() -> UIImageView {
+    func makePicture() {
         let imageView = UIImageView()
-        
-        return imageView
+        self.picture = imageView
     }
     
-    func makePictureLabel() -> UILabel {
+    func makePictureLabel() {
         let label = UILabel()
         label.text = "Picture"
-        
-        return label
+        self.pictureLabel = label
     }
     
 }
